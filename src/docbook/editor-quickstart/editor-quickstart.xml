@@ -74,6 +74,23 @@ MySQLを使用します。エディタの背景を右クリックし、メニュ
         </screenshot>
       </figure>
     </section>
+    <section>
+      <title>パレットの展開</title>
+      <para>Jiemamy Eclipse Model Editorでの操作はこのパレットから各種ツールを選択してそうさします。これからの操作を簡単に行うためにパレットを展開しておきましょう。
+      </para>
+      <figure>
+        <title>画面右側の左向き三角のアイコンをクリックしてパレットを展開します。</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/palette_open.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+      <figure>
+        <title>パレットを格納するときは、右向き三角のアイコンをクリックします。</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/palette_close.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+    </section>
   </chapter>
 
   <chapter id="diagram">
