@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+    "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<book lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Jiemamy API クイックスタートガイド</title>
+  <titleabbrev>APIクイックスタート</titleabbrev>
+  <bookinfo>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/Jiemamy_logo_600x150.gif"/>
+      </imageobject>
+    </mediaobject>
+    <copyright>
+      <year>2009</year>
+      <holder>Jiemamy Project and the Others</holder>
+    </copyright>
+    <abstract>
+      <title>概要</title>
+      <para>Jiemamy APIの基礎的な使用方法を、実例に沿いながら説明します。</para>
+    </abstract>
+    <productname>Jiemamy</productname>
+    <releaseinfo>version 0.2</releaseinfo>
+  </bookinfo>
+  
+  <toc/>
+  
+  <preface>
+    <title>まえがき</title>
+    <para>このチュートリアルでは、簡単なJiemamyモデルの操作を通じて、Jiemamy APIの基本的な使い方を簡潔に紹介します。
+このチュートリアルを終了すれば、Jiemamy APIを利用したJiemamyモデル編集に関する基本的な知識が身に付きます。
+
+このチュートリアルを完了するのに要する時間は約(TODO)分です。
+    </para>
+    <xi:include href="../common/section_license1.xml" />
+    <xi:include href="../common/section_license2.xml" />
+  </preface>
+  
+  <chapter id="intro">
+    <title>はじめに</title>
+    <section>
+      <title>概要</title>
+      <para>Jiemamyは、Webアプリケーションの開発に伴うデータベーススナップショット（スキーマと初期データ等）の管理スイートを提供します。
+GUIエディタによるER図の管理を通じてDBの状態・履歴を管理し、データベースのリファクタリングなどをサポートします。
+      </para>
+    </section>
+    <xi:include href="../common/section_discharge.xml" />
+    <xi:include href="../common/section_api_conditions.xml" />
+  </chapter>
+
+  <chapter id="basic">
+    <title>Jiemamyの基本型</title>
+    <para>(TODO)</para>
+    <section>
+      <title>Jiemamyコンテキスト</title>
+      <para>Jiemamyの使用を開始する際には、Jiemamyクラスのインスタンスが必要となります。このインスタンスはJiemamyコンテキストと呼ばれ、
+Jiemamyのインスタンス空間を表します。Jiemamyモデルは、必ずいずれかのインスタンス空間に属し、異なったインスタンス空間に属しているモデル同士が
+関連（親子関係や参照関係）を持つことができません。
+      </para>
+      <para>Jiemamyコンテキストは、以下のように取得します。</para>
+      <example>
+        <title>Jiemamyコンテキストの取得</title>
+        <xi:include href="../../../target/codes/newJiemamy.xml" />
+      </example>
+      <para>このメソッドを呼び出した結果、毎回異なったコンテキストのインスタンスが生成されます。</para>
+    </section>
+    <section>
+      <title>Jiemamyファクトリ</title>
+      <para>Jiemamyのモデルインスタンス等、新しいJiemamy関係のインスタンスは JiemamyFactory から取得します。
+      </para>
+      <para>Jiemamyファクトリは、コンテキストから以下のように取得します。</para>
+      <example>
+        <title>Jiemamyファクトリの取得</title>
+        <xi:include href="../../../target/codes/getFactory.xml" />
+      </example>
+      <para>ファクトリは、様々なJiemamyモデルのインスタンスを生成します。テーブルやカラム等はJiemamyFactory#newModel(Class)メソッドを
+使用して取得します。以下の例では、テーブルを新規に作成しています。
+      </para>
+      <example>
+        <title>新しいモデルインスタンスの取得</title>
+        <xi:include href="../../../target/codes/newTable.xml" />
+      </example>
+      <para>Jiemamyのインスタンスは、一部の例外を除いて new 演算子によって取得しません。ほとんどのインスタンスは、このファクトリから取得します。
+java.lang.Classを鋳型情報として、インスタンスを鋳造するイメージです。
+      </para>
+      <para>また、データ型だけは特殊で、JiemamyFactory#newDataType(DataTypeMold)メソッドを使用します。DataType型のインスタンスは
+java.lang.Classだけでは生成にあたっての情報が足りないため、代りにDataTypeMold（データ型の鋳型）を使用します。データ型については、Dialect
+（SQL方言）に依存する為、DataTypeMoldはDialectから取得する必要があります。この件については後述しますが、簡単にDataTypeの生成例だけを
+以下に示します。
+      </para>
+      <example>
+        <title>新しいDataTypeインスタンスの取得</title>
+        <xi:include href="../../../target/codes/newDataType.xml" />
+      </example>
+    </section>
+    <section>
+      <title>ルートモデル</title>
+      <para>JiemamyファクトリからはRootModelを取得する事ができます。RootModelは、Jiemamyモデルの根となるモデルであり、全ての有効なモデルは
+このモデルから辿ることができます。
+      </para>
+      <example>
+        <title>ルートモデルの取得</title>
+        <xi:include href="../../../target/codes/getRootModel.xml" />
+      </example>
+    </section>
+  </chapter>
+
+  <chapter id="dialect">
+    <title>Dialect（SQL方言）</title>
+    <para>(TODO)</para>
+  </chapter>
+
+  <chapter id="buildModel">
+    <title>Jiemamyのモデル構築</title>
+    <para>(TODO)</para>
+    <section>
+      <title>簡単なテーブルを作る</title>
+      <para>(TODO)</para>
+      <example>
+        <title>簡単なテーブルを含むモデルの構築</title>
+        <xi:include href="../../../target/codes/simpleTable.xml" />
+      </example>
+      <para>このように、Jiemamyモデルは、主に以下のような手順を繰り返して構築していきます。</para>
+      <procedure>
+        <step><para>JiemamyFactoryから新しいモデルインスタンスを取得する。</para></step>
+        <step><para>モデルのプロパティにsetter等を使って値を設定する。この値はさらにJiemamyFactoryで生成するものかもしれません。</para></step>
+        <step><para>1で生成したモデルを、親となるモデルにsetter等を使って設定する。</para></step>
+      </procedure>
+    </section>
+  </chapter>
+
+  <chapter id="serialize">
+    <title>シリアライズ・デシリアライズ</title>
+    <para>作成したモデルは、シリアライザを使用して、XML形式で保存することができます。このXML形式はJiemamy Model Editorが利用するXML形式と
+同一です。</para>
+    <para>シリアライズ・デシリアライズは、JiemamySerializerを使用して行うことができ、このインスタンスはJiemamy#getSerializer()メソッドで
+取得する事ができます。</para>
+    <para>シリアライズの例を以下に示します。ここではRootModelを第二引数に与えた出力ストリームに出力しています。</para>
+    <example>
+      <title>シリアライズ</title>
+      <xi:include href="../../../target/codes/serialize.xml" />
+    </example>
+    <para>また、シリアライズによって出力したXMLは、下記の例のようにデシリアライズし、RootModelを得ることができます。</para>
+    <example>
+      <title>デシリアライズ</title>
+      <xi:include href="../../../target/codes/deserialize.xml" />
+    </example>
+  </chapter>
+
+  <chapter id="compose">
+    <title>インポート・エクスポート</title>
+    <para>作成したモデルは、インポータ・エクスポータを使用して、(TODO)</para>
+  </chapter>
+  
+  <chapter id="api">
+    <title>APIについて</title>
+    <para>以上の通り、Jiemamyはモデルの操作APIを公開し、作ったモデルを自由に扱うことができます。</para>
+    <para>しかし、リリースして間もないこともあり、未成熟であるのも事実です。今後のバージョンアップにより、バグ修正やAPIの修正・拡張を行っていく
+ことになると思いますが、そのポリシーを説明します。
+    </para>
+    <para>Jiemamyの仕様コンポーネント(spec)のバージョンは、"major.minor[-SNAPSHOT]"形式です。
+majorは大なアーキテクチャの変更があった際に繰り上げ、minorは、仕様に変更（つまり、specに対するあらゆる変更）があった際に繰上げます。
+APIの追加は随時行っていきます。そして、APIの廃止は @Deprecated アノテーションで対処し、時期を見て実際に削除します。
+@Deprecatedから実際の削除までの期間は、v1.0以前は2～3ヶ月、v1.0以降は未定です。（もしかしたらメジャーバージョンアップまで消さない、とするかもしれません。）
+また、API変更について、メソッドのシグネチャが変わる場合は、旧メソッドを @Deprecated とし、新メソッドをオーバーロードする形にします。
+シグネチャの変更を伴わない変更（挙動の変更＝Javadocの変更）は、v1.0以前は随時行う。v1.0以降はどうするか検討中です。
+しかし、バージョンアップに伴い、既存のクライアントに影響を出さない事を重要事項として扱っていきます。
+    </para>
+    <para>実装コンポーネントのバージョニングは、"major.minor.release[-SNAPSHOT]"形式です。
+major, minorは、準拠する対象仕様バージョンに合わせ（spec v0.2準拠の場合は、v0.2.x）、仕様に変更がなく実装のみを修正（bug fix等）した場合に、
+releaseを繰り上げます。
+    </para>
+    <para>次に、Jiemamyのバグの基準を示します。</para>
+    <para>バグには「仕様バグ」（Javadoc自体の記述漏れ・不整合など）と「実装バグ」（コードの不整合など）がありえます。
+前者はspecの修正が必要となり、後者は実装の修正を行います。（その時のバージョン番号ポリシーは上記の通り）
+    </para>
+    <para>Jiemamyの開発は、以下のルールを適用しています。</para>
+    <itemizedlist>
+      <listitem><para>Javadocの @throws は RuntimeException についても記述されていなければならない。
+つまり、メソッド呼び出しの結果、Javadocに記述のない例外（RuntimeExceptionを含む）が飛んだら、バグである。
+（これは「飛ぶべきではない例外が飛ぶ」という実装バグの可能性と、「飛ぶべき例外がJavadocに記述されていない」という仕様バグの可能性があります。）
+      </para></listitem>
+      <listitem><para>APIの挙動については全てJavadocに記述されているべきで、Javadocを読めば何が起るか全て把握できるべき。
+「こういうケースではどうなるのだろう？」という疑問が発生する時点で、Javadocの記述漏れとみなす。（ただし、reflectionで強制的にフィールドを書き換えたりした
+場合はどうなるのだろう、等はナシで。） 呼び出しの結果、Javadocに記述されていない動作をするのはバグである。
+（これは「すべきではない動作をする」という実装バグの可能性と、「すべきである動作がJavadocに記述されていない」という仕様バグの可能性があります。）
+      </para></listitem>
+      <listitem><para>JiemamyのAPIは NullPointerException をスローしない。NullPointerExceptionが飛んだらバグである。</para></listitem>
+    </itemizedlist>
+    <para>以上のようなケースに遭遇（まだまだ多いと思います）した際には、最終章に記述してあるメーリングリストにご一報下さい。
+Jiemamyの品質向上にご協力お願いいたします。
+    </para>
+  </chapter>
+
+  <xi:include href="../common/chapter_finish.xml" />
+  
+</book>

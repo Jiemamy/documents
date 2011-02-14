@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>外部キーの追加と削除</title>
+  <procedure>
+    <step><para>外部キーの追加は、まずパレットの「コネクション」カテゴリから「外部キー」を選択します。</para></step>
+    <step><para>その状態で、まず制約を受けるテーブルをクリックします。</para></step>
+    <step><para>続いて、参照されるテーブルをクリックします。</para></step>
+  </procedure>
+  <para>以上で、ダイアグラム上に外部キーが1つ作成されます。</para>
+  <tip>
+    <para>外部キーは、自分自身のテーブルを参照することも可能です。2回続けて同じテーブルをクリックすることにより、このような外部キーも
+作成することができます。
+    </para>
+  </tip>
+  <figure>
+    <title>パレット</title>
+    <screenshot>
+      <mediaobject><imageobject><imagedata fileref="images/palette.png"></imagedata></imageobject></mediaobject>
+    </screenshot>
+  </figure>
+  <para>外部キーの削除は、削除したい外部キーを選択し、右クリックで表示されるコンテキストメニューから「Delete」を選択します。
+メニュー選択の代りに、<keycap>DEL</keycap>キーで削除を行うこともできます。
+  </para>
+  <tip>
+    <para>複数のコネクションを同時に選択し、全てを同時に削除することも可能です。</para>
+  </tip>
+  <figure>
+    <title>コンテキストメニュー</title>
+    <screenshot>
+      <mediaobject><imageobject><imagedata fileref="images/basic_delete.png"></imagedata></imageobject></mediaobject>
+    </screenshot>
+  </figure>
+</section>

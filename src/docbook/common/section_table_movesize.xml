@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>テーブルの移動とサイズ調整</title>
+  <para>ノードをドラッグ＆ドロップすることにより、位置を移動することができます。また、ノードを選択した時、縁に8カ所配置されているハンドルを
+ドラッグすることにより、ノードのサイズを変更することができます。
+  </para>
+  <figure>
+    <title>ノードのハンドル</title>
+    <screenshot>
+      <mediaobject><imageobject><imagedata fileref="images/basic_handle_01.png"></imagedata></imageobject></mediaobject>
+    </screenshot>
+  </figure>
+  <tip>
+    <para>手動でノードのサイズを変更した場合は、カラム数に応じてサイズが自動調整されなくなります。一度手動調整したノードを自動調整に戻すには、
+コンテキストメニューから「サイズ調整(Z)」＞「サイズを自動調整(S)」を選択します。
+    </para>
+  </tip>
+</section>

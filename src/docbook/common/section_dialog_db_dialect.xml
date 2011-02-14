@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>DBの選択</title>
+  <para>新しいJiemamyモデルファイルを開いたら、まずこれからモデリングするスキーマを適用するデータベースを選択します。
+データベース情報編集ダイアログのデータベースの項目を変更し、OKボタンをクリックします。
+  </para>
+  <figure>
+    <title>データベースの選択</title>
+    <screenshot>
+      <mediaobject><imageobject><imagedata fileref="images/rootEdit_02.png"></imagedata></imageobject></mediaobject>
+    </screenshot>
+  </figure>
+</section>

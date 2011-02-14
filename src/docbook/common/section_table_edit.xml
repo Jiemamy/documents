@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>テーブルの編集</title>
+  <procedure>
+    <step><para>テーブルをダブルクリック、またはコンテキストメニューから「プロパティ(P)」を選択することにより、テーブル編集ダイアログが開きます。</para></step>
+    <step><para>タブ上部のテーブル情報編集エリアで、テーブル名等の編集を行います。</para></step>
+  </procedure>
+  <tip>
+    <para>テーブルが選択された状態で、再びそのテーブルをクリックすると、ダイアログを開かずに、テーブル名をその場で編集することができます。</para>
+    <figure>
+      <title>テーブル名の直接編集</title>
+      <screenshot>
+        <mediaobject><imageobject><imagedata fileref="images/tableEdit_02.png"></imagedata></imageobject></mediaobject>
+      </screenshot>
+    </figure>
+  </tip>
+  <para>テーブル編集ダイアログの最上段で、テーブルの基本情報を設定することができます。ここに、テーブルの物理名や論理名を入力し、また、
+表示色の調整を行うことができます。
+  </para>
+  <para>一番右にある「無効」チェックボックスをONにすると、エクスポーターがこのテーブルを無視するようになります。</para>
+</section>

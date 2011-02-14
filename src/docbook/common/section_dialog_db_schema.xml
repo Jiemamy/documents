@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>スキーマ名の設定</title>
+  <para>必要であれば、データベースのスキーマ名を設定することができます。
+データベース情報編集ダイアログのスキーマ名入力欄にスキマー名を入力し、OKボタンをクリックします。
+  </para>
+</section>

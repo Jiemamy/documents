@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section>
+  <title>保存</title>
+  <para>エディタで開いて編集を行ったファイルは、ツールバーのSaveアイコンをクリックすることにより、保存できます。編集されたファイルは、タブに表示された
+ファイル名の前にアスタリスク(*)でマークがつきます。マークのないファイルは保存することができません。
+  </para>
+  <figure>
+    <title>Saveアイコン</title>
+    <screenshot>
+      <mediaobject><imageobject><imagedata fileref="images/save_01.png"></imagedata></imageobject></mediaobject>
+    </screenshot>
+  </figure>
+  <figure>
+    <title>編集マーク</title>
+    <screenshot>
+      <mediaobject><imageobject><imagedata fileref="images/save_02.png"></imagedata></imageobject></mediaobject>
+    </screenshot>
+  </figure>
+</section>

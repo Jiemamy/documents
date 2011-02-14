@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>ベンドポイント</title>
+  <para>コネクションを選択した時に現れるハンドル（図中の青で示したハンドル）をドラッグすることにより、ベンドポイントを作成することができます。
+また、既に作成したベンドポイントのハンドル（図中の赤で示したハンドル）をドラッグすることにより、ベンドポイントの移動ができます。
+さらに、ベンドポイントのハンドルを、その左右のベンドポイントの延長線上に配置することにより、ベンドポイントの削除ができます。
+  </para>
+  <figure>
+    <title>コネクションのハンドル</title>
+    <screenshot>
+      <mediaobject><imageobject><imagedata fileref="images/basic_handle_02.png"></imagedata></imageobject></mediaobject>
+    </screenshot>
+  </figure>
+</section>

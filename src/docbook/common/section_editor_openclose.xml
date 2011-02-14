@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section>
+  <title>エディタの起動と終了</title>
+  <para>新しくJiemamyモデルファイルを作成する場合は、File ＞ New ＞ Other より、Jiemamy ER Diagram を選択し、Nextボタンをクリックします。
+次の画面でファイル名を入力します。拡張子は .jer でなければなりません。
+  </para>
+  <figure>
+    <title>新規Jiemamyモデルファイルの作成</title>
+    <screenshot>
+      <mediaobject><imageobject><imagedata fileref="images/open_01.png"></imagedata></imageobject></mediaobject>
+    </screenshot>
+  </figure>
+  <tip>
+    <para>ファイルの拡張子を省略した場合は、自動的に .jer を補完します。</para>
+  </tip>
+  <note>
+    <para>Eclipseは、プロジェクトがなければファイルを作成することができません。1つもプロジェクトが無い場合は、新規にプロジェクトを作成してください。
+    </para>
+  </note>
+  <para>既存のJiemamyモデルファイルを開く場合は、Package Explorer, Navigator, Project Explorer 等より、ファイルをダブルクリックする
+ことにより、エディタを開く事ができます。
+  </para>
+  <figure>
+    <title>既存Jiemamyモデルファイルを開く</title>
+    <screenshot>
+      <mediaobject><imageobject><imagedata fileref="images/open_02.png"></imagedata></imageobject></mediaobject>
+    </screenshot>
+  </figure>
+</section>

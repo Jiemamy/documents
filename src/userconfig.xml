@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<fonts>
+<!-- 
+===========================================================================
+==
+== 日本語フォントの定義の追加
+==
+===========================================================================
+ -->
+<!-- ＭＳ明朝体 -->
+<font
+  metrics-file="target/conf/ipamincho.xml"
+  kerning="yes" embed-file="src/fonts/IPAfont00203/ipam.ttf">
+  <font-triplet name="Mincho" style="normal" weight="normal" />
+  <font-triplet name="Mincho" style="normal" weight="bold" />
+  <font-triplet name="Mincho" style="italic" weight="normal" />
+  <font-triplet name="Mincho" style="italic" weight="bold" />
+  <font-triplet name="MS-Mincho" style="normal" weight="normal" />
+  <font-triplet name="MS-Mincho" style="normal" weight="bold" />
+  <font-triplet name="MS-Mincho" style="italic" weight="normal" />
+  <font-triplet name="MS-Mincho" style="italic" weight="bold" />
+  <font-triplet name="MSMincho" style="normal" weight="normal" />
+  <font-triplet name="MSMincho" style="normal" weight="bold" />
+  <font-triplet name="MSMincho" style="italic" weight="normal" />
+  <font-triplet name="MSMincho" style="italic" weight="bold" />
+  <font-triplet name="ＭＳ明朝" style="normal" weight="normal" />
+  <font-triplet name="ＭＳ明朝" style="normal" weight="bold" />
+  <font-triplet name="ＭＳ明朝" style="italic" weight="normal" />
+  <font-triplet name="ＭＳ明朝" style="italic" weight="bold" />
+  <font-triplet name="IPA-Mincho" style="normal" weight="normal" />
+  <font-triplet name="IPA-Mincho" style="normal" weight="bold" />
+  <font-triplet name="IPA-Mincho" style="italic" weight="normal" />
+  <font-triplet name="IPA-Mincho" style="italic" weight="bold" />
+  <font-triplet name="IPAMincho" style="normal" weight="normal" />
+  <font-triplet name="IPAMincho" style="normal" weight="bold" />
+  <font-triplet name="IPAMincho" style="italic" weight="normal" />
+  <font-triplet name="IPAMincho" style="italic" weight="bold" />
+  <font-triplet name="IPA明朝" style="normal" weight="normal" />
+  <font-triplet name="IPA明朝" style="normal" weight="bold" />
+  <font-triplet name="IPA明朝" style="italic" weight="normal" />
+  <font-triplet name="IPA明朝" style="italic" weight="bold" />
+</font>
+
+<!-- ＭＳＰ明朝体 -->
+<font
+  metrics-file="target/conf/ipapmincho.xml"
+  kerning="yes" embed-file="src/fonts/IPAfont00203/ipamp.ttf">
+  <font-triplet name="PMincho" style="normal" weight="normal" />
+  <font-triplet name="PMincho" style="normal" weight="bold" />
+  <font-triplet name="PMincho" style="italic" weight="normal" />
+  <font-triplet name="PMincho" style="italic" weight="bold" />
+  <font-triplet name="MS-PMincho" style="normal" weight="normal" />
+  <font-triplet name="MS-PMincho" style="normal" weight="bold" />
+  <font-triplet name="MS-PMincho" style="italic" weight="normal" />
+  <font-triplet name="MS-PMincho" style="italic" weight="bold" />
+  <font-triplet name="MSPMincho" style="normal" weight="normal" />
+  <font-triplet name="MSPMincho" style="normal" weight="bold" />
+  <font-triplet name="MSPMincho" style="italic" weight="normal" />
+  <font-triplet name="MSPMincho" style="italic" weight="bold" />
+  <font-triplet name="ＭＳＰ明朝" style="normal" weight="normal" />
+  <font-triplet name="ＭＳＰ明朝" style="normal" weight="bold" />
+  <font-triplet name="ＭＳＰ明朝" style="italic" weight="normal" />
+  <font-triplet name="ＭＳＰ明朝" style="italic" weight="bold" />
+  <font-triplet name="IPA-PMincho" style="normal" weight="normal" />
+  <font-triplet name="IPA-PMincho" style="normal" weight="bold" />
+  <font-triplet name="IPA-PMincho" style="italic" weight="normal" />
+  <font-triplet name="IPA-PMincho" style="italic" weight="bold" />
+  <font-triplet name="IPAPMincho" style="normal" weight="normal" />
+  <font-triplet name="IPAPMincho" style="normal" weight="bold" />
+  <font-triplet name="IPAPMincho" style="italic" weight="normal" />
+  <font-triplet name="IPAPMincho" style="italic" weight="bold" />
+  <font-triplet name="IPA P明朝" style="normal" weight="normal" />
+  <font-triplet name="IPA P明朝" style="normal" weight="bold" />
+  <font-triplet name="IPA P明朝" style="italic" weight="normal" />
+  <font-triplet name="IPA P明朝" style="italic" weight="bold" />
+</font>
+
+<!-- ＭＳゴシック体 -->
+<font
+  metrics-file="target/conf/ipagothic.xml"
+  kerning="yes" embed-file="src/fonts/IPAfont00203/ipag.ttf">
+  <font-triplet name="Gothic" style="normal" weight="normal" />
+  <font-triplet name="Gothic" style="normal" weight="bold" />
+  <font-triplet name="Gothic" style="italic" weight="normal" />
+  <font-triplet name="Gothic" style="italic" weight="bold" />
+  <font-triplet name="MS-Gothic" style="normal" weight="normal" />
+  <font-triplet name="MS-Gothic" style="normal" weight="bold" />
+  <font-triplet name="MS-Gothic" style="italic" weight="normal" />
+  <font-triplet name="MS-Gothic" style="italic" weight="bold" />
+  <font-triplet name="MSGothic" style="normal" weight="normal" />
+  <font-triplet name="MSGothic" style="normal" weight="bold" />
+  <font-triplet name="MSGothic" style="italic" weight="normal" />
+  <font-triplet name="MSGothic" style="italic" weight="bold" />
+  <font-triplet name="ＭＳゴシック" style="normal" weight="normal" />
+  <font-triplet name="ＭＳゴシック" style="normal" weight="bold" />
+  <font-triplet name="ＭＳゴシック" style="italic" weight="normal" />
+  <font-triplet name="ＭＳゴシック" style="italic" weight="bold" />
+  <font-triplet name="IPA-Gothic" style="normal" weight="normal" />
+  <font-triplet name="IPA-Gothic" style="normal" weight="bold" />
+  <font-triplet name="IPA-Gothic" style="italic" weight="normal" />
+  <font-triplet name="IPA-Gothic" style="italic" weight="bold" />
+  <font-triplet name="IPAGothic" style="normal" weight="normal" />
+  <font-triplet name="IPAGothic" style="normal" weight="bold" />
+  <font-triplet name="IPAGothic" style="italic" weight="normal" />
+  <font-triplet name="IPAGothic" style="italic" weight="bold" />
+  <font-triplet name="IPAゴシック" style="normal" weight="normal" />
+  <font-triplet name="IPAゴシック" style="normal" weight="bold" />
+  <font-triplet name="IPAゴシック" style="italic" weight="normal" />
+  <font-triplet name="IPAゴシック" style="italic" weight="bold" />
+</font>
+
+<!-- ＭＳＰゴシック体 -->
+<font
+  metrics-file="target/conf/ipapgothic.xml"
+  kerning="yes" embed-file="src/fonts/IPAfont00203/ipagp.ttf">
+  <font-triplet name="PGothic" style="normal" weight="normal" />
+  <font-triplet name="PGothic" style="normal" weight="bold" />
+  <font-triplet name="PGothic" style="italic" weight="normal" />
+  <font-triplet name="PGothic" style="italic" weight="bold" />
+  <font-triplet name="MS-PGothic" style="normal" weight="normal" />
+  <font-triplet name="MS-PGothic" style="normal" weight="bold" />
+  <font-triplet name="MS-PGothic" style="italic" weight="normal" />
+  <font-triplet name="MS-PGothic" style="italic" weight="bold" />
+  <font-triplet name="MSPGothic" style="normal" weight="normal" />
+  <font-triplet name="MSPGothic" style="normal" weight="bold" />
+  <font-triplet name="MSPGothic" style="italic" weight="normal" />
+  <font-triplet name="MSPGothic" style="italic" weight="bold" />
+  <font-triplet name="ＭＳＰゴシック" style="normal" weight="normal" />
+  <font-triplet name="ＭＳＰゴシック" style="normal" weight="bold" />
+  <font-triplet name="ＭＳＰゴシック" style="italic" weight="normal" />
+  <font-triplet name="ＭＳＰゴシック" style="italic" weight="bold" />
+  <font-triplet name="IPA-PGothic" style="normal" weight="normal" />
+  <font-triplet name="IPA-PGothic" style="normal" weight="bold" />
+  <font-triplet name="IPA-PGothic" style="italic" weight="normal" />
+  <font-triplet name="IPA-PGothic" style="italic" weight="bold" />
+  <font-triplet name="IPAPGothic" style="normal" weight="normal" />
+  <font-triplet name="IPAPGothic" style="normal" weight="bold" />
+  <font-triplet name="IPAPGothic" style="italic" weight="normal" />
+  <font-triplet name="IPAPGothic" style="italic" weight="bold" />
+  <font-triplet name="IPA Pゴシック" style="normal" weight="normal" />
+  <font-triplet name="IPA Pゴシック" style="normal" weight="bold" />
+  <font-triplet name="IPA Pゴシック" style="italic" weight="normal" />
+  <font-triplet name="IPA Pゴシック" style="italic" weight="bold" />
+</font>
+
+<!-- ＭＳＵＩゴシック体 -->
+<font
+  metrics-file="target/conf/ipauigothic.xml"
+  kerning="yes" embed-file="src/fonts/IPAfont00203/ipagui.ttf">
+  <font-triplet name="UIGothic" style="normal" weight="normal" />
+  <font-triplet name="UIGothic" style="normal" weight="bold" />
+  <font-triplet name="UIGothic" style="italic" weight="normal" />
+  <font-triplet name="UIGothic" style="italic" weight="bold" />
+  <font-triplet name="UI Gothic" style="normal" weight="normal" />
+  <font-triplet name="UI Gothic" style="normal" weight="bold" />
+  <font-triplet name="UI Gothic" style="italic" weight="normal" />
+  <font-triplet name="UI Gothic" style="italic" weight="bold" />
+  <font-triplet name="MS-UIGothic" style="normal" weight="normal" />
+  <font-triplet name="MS-UIGothic" style="normal" weight="bold" />
+  <font-triplet name="MS-UIGothic" style="italic" weight="normal" />
+  <font-triplet name="MS-UIGothic" style="italic" weight="bold" />
+  <font-triplet name="MSUIGothic" style="normal" weight="normal" />
+  <font-triplet name="MSUIGothic" style="normal" weight="bold" />
+  <font-triplet name="MSUIGothic" style="italic" weight="normal" />
+  <font-triplet name="MSUIGothic" style="italic" weight="bold" />
+  <font-triplet name="ＭＳＵＩゴシック" style="normal" weight="normal" />
+  <font-triplet name="ＭＳＵＩゴシック" style="normal" weight="bold" />
+  <font-triplet name="ＭＳＵＩゴシック" style="italic" weight="normal" />
+  <font-triplet name="ＭＳＵＩゴシック" style="italic" weight="bold" />
+  <font-triplet name="IPA-UIGothic" style="normal" weight="normal" />
+  <font-triplet name="IPA-UIGothic" style="normal" weight="bold" />
+  <font-triplet name="IPA-UIGothic" style="italic" weight="normal" />
+  <font-triplet name="IPA-UIGothic" style="italic" weight="bold" />
+  <font-triplet name="IPAUIGothic" style="normal" weight="normal" />
+  <font-triplet name="IPAUIGothic" style="normal" weight="bold" />
+  <font-triplet name="IPAUIGothic" style="italic" weight="normal" />
+  <font-triplet name="IPAUIGothic" style="italic" weight="bold" />
+  <font-triplet name="IPA UIゴシック" style="normal" weight="normal" />
+  <font-triplet name="IPA UIゴシック" style="normal" weight="bold" />
+  <font-triplet name="IPA UIゴシック" style="italic" weight="normal" />
+  <font-triplet name="IPA UIゴシック" style="italic" weight="bold" />
+</font>
+</fonts>
+</configuration>

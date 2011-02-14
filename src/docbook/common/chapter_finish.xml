@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter id="finish" lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>おわりに</title>
+  <section>
+    <title>サポートが必要な場合</title>
+    <para>配布ドキュメントやWebサイト上で解決できない問題に遭遇した場合は、以下のメーリングリストに質問を投稿することができます。</para>
+    <para>Jiemamy-usersメーリングリスト： jiemamy-users@lists.sourceforge.jp</para>
+    <para>質問を投稿する際は、以下のページを参考に投稿内容を検討してください。早期解決に繋がります。</para>
+    <para>技術系メーリングリストで質問するときのパターン・ランゲージ -- 「問題の解決」から「情報の共有」に至るために
+<uri>http://www.hyuki.com/writing/techask.html</uri>
+    </para>
+  </section>
+  <section>
+    <title>プログラム・ドキュメントにミスを発見した場合</title>
+    <para>プログラム・ドキュメント等にミスを発見した際も、上記メーリングリストに投稿してください。</para>
+  </section>
+</chapter>

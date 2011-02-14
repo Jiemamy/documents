@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+    "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<book lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Jiemamy Eclipse Model Editor
+リファレンスマニュアル</title>
+  <titleabbrev>エディタリファレンス</titleabbrev>
+  <bookinfo>
+    <releaseinfo>version 0.2.0</releaseinfo>
+    <productname>Jiemamy Eclipse Model Editor</productname>
+    <copyright>
+      <year>2009</year>
+      <holder>Jiemamy Project and Others</holder>
+    </copyright>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/Jiemamy_logo_600x150.gif"/>
+      </imageobject>
+    </mediaobject>
+    <abstract>
+      <title>概要</title>
+      <para>Jiemamy Eclipse Model Editorの各機能を網羅的に解説します。</para>
+    </abstract>
+  </bookinfo>
+  
+  <toc/>
+  
+  <preface>
+    <title>まえがき</title>
+    <para>(TODO)</para>
+    <para>このマニュアルでは、Jiemamy Eclipse Model Editorの各機能を列挙し、それぞれに関して簡単な実例を
+挙げながら解説します。
+    </para>
+    <xi:include href="../common/section_license1.xml" />
+    <xi:include href="../common/section_license2.xml" />
+  </preface>
+  
+  <chapter id="intro">
+    <title>はじめに</title>
+    <section>
+      <title>概要</title>
+      <para>Jiemamyは、Webアプリケーションの開発に伴うデータベーススナップショット（スキーマと初期データ等）の管理スイートを提供します。
+GUIエディタによるER図の管理を通じてDBの状態・履歴を管理し、データベースのリファクタリングなどをサポートします。
+      </para>
+    </section>
+    <xi:include href="../common/section_discharge.xml" />
+    <xi:include href="../common/section_editor_conditions.xml" />
+    <xi:include href="../common/section_install.xml" />
+  </chapter>
+
+  <chapter id="basic">
+    <title>エディタの基本操作</title>
+    <xi:include href="../common/section_editor_openclose.xml"/>
+    <xi:include href="../common/section_editor_save.xml"/>
+  </chapter>
+  
+  <chapter id="editDatabase">
+    <title>データベース基本情報編集ダイアログ</title>
+    <para>ダイアグラムの背景を選択し、右クリックしたメニューから「プロパティ(P)」を選択することにより、データベース情報編集ダイアログを開く事ができます。
+このダイアログでは、データベース・スキーマに関する全体的な設定や、ドメイン・データセット等の設定を行うことができます。
+    </para>
+    <figure>
+      <title>エディタを右クリックしたメニューからプロパティ(P)を選択</title>
+      <screenshot>
+        <mediaobject><imageobject><imagedata fileref="images/rootEdit_01.png"></imagedata></imageobject></mediaobject>
+      </screenshot>
+    </figure>
+    <xi:include href="../common/section_dialog_db_schema.xml"/>
+    <xi:include href="../common/section_dialog_db_dialect.xml"/>
+    <section>
+      <title>ドメイン情報の設定</title>
+      <para>ドメインとは、既存の型に対してサイズ等のオプション及び制約を付与した、ユーザ定義のデータ型です。ドメインを定義して使用することにより、
+特定のドメインの仕様が変更になった際、そのドメインを使用する全てのカラムの型が同時に変更されます。
+      </para>
+      <para>例えば、ある「名前」を表すカラムに対して使用する目的でNAMEというドメインを"CHAR(32) NOT NULL"で定義していて、いくつかのカラムでこの
+NAME型を使用していたとします。この時、SQLの出力に際しては"CHAR(32) NOT NULL"が出力されます。ここで、「名前」に関する仕様変更があり、
+型について"VARCHAR(64)"を使用することになった場合、ドメイン定義を "VARCHAR(64)" に変更します。これにより、以後のSQLの出力に際して
+全てのNAMEが "VARCHAR(64)" で出力されるようになります。
+      </para>
+      <section>
+        <title>ドメインの追加・編集・削除</title>
+        <procedure>
+          <step>
+            <para>データベース基本情報編集ダイアログを開き、「ドメイン(O)」タブを選択します。</para>
+          </step>
+          <step>
+            <para>タブの上部には、現在設定されているドメインの一覧が表示されています。その直下にある「追加(A)」ボタンをクリックします。</para>
+            <figure>
+              <title>「追加(A)」ボタンをクリックした直後</title>
+              <screenshot>
+                <mediaobject><imageobject><imagedata fileref="images/domain_01.png"></imagedata></imageobject></mediaobject>
+              </screenshot>
+            </figure>
+          </step>
+          <step>
+            <para>最下段に新しいドメインが追加され、「ドメイン情報」部分にドメイン名やデータ型など、必要な設定を行います。</para>
+            <tip>
+              <para>「追加(A)」ではなく「挿入(I)」をクリックすることにより、現在の選択位置に新規作成を行うことができます。また、削除ボタンの右側に
+ある「▲」「▼」ボタンで、順番を入れ替えることができます。
+              </para>
+            </tip>
+          </step>
+          <step>
+            <para>ドメインの一覧から行を選択することにより、「ドメイン情報」が切り替わり、設定の編集を行うことができます。</para>
+          </step>
+          <step>
+            <para>また、ここで「削除(R)」ボタンをクリックすると、現在選択されているドメインが削除されます。</para>
+            <warning>
+              <para>この時、既にどこかから参照されていたドメインだった場合、それらの型は、ドメインに設定されていた型に展開されます。</para>
+            </warning>
+          </step>
+          <step>
+            <para>最後に、ダイアログの「OK」ボタンをクリックすることにより、この設定が保存されます。</para>
+          </step>
+        </procedure>
+      </section>
+      <section>
+        <title>ドメインの設定</title>
+        <para>(TODO)</para>
+      </section>
+    </section>
+    <section>
+      <title>データセット情報の設定</title>
+      <section>
+        <title>データセットの追加・編集・削除</title>
+        <procedure>
+          <step>
+            <para>データベース基本情報編集ダイアログを開き、「データセット(T)」タブを選択します。</para>
+          </step>
+          <step>
+            <para>タブの上部には、現在設定されているデータベースの一覧が表示されています。その直下にある「追加(A)」ボタンをクリックします。</para>
+            <figure>
+              <title>「追加(A)」ボタンをクリックした直後</title>
+              <screenshot>
+                <mediaobject><imageobject><imagedata fileref="images/dataSet_01.png"></imagedata></imageobject></mediaobject>
+              </screenshot>
+            </figure>
+          </step>
+          <step>
+            <para>最下段に新しいデータセットが追加され、「データセット情報」部分にデータセット名を入力します。</para>
+            <para>データセット名の右側の「編集」ボタンをクリックすることにより、実際のデータ編集ダイアログが開きます。データ編集ダイアログについては
+次項で説明します。
+            </para>
+            <tip>
+              <para>「追加(A)」ではなく「挿入(I)」をクリックすることにより、現在の選択位置に新規作成を行うことができます。また、削除ボタンの右側に
+ある「▲」「▼」ボタンで、順番を入れ替えることができます。
+              </para>
+            </tip>
+          </step>
+          <step>
+            <para>データセットの一覧から行を選択することにより、「データセット情報」が切り替わり、設定の編集を行うことができます。</para>
+          </step>
+          <step>
+            <para>また、ここで「削除(R)」ボタンをクリックすると、現在選択されているデータセットが削除されます。</para>
+          </step>
+          <step>
+            <para>最後に、ダイアログの「OK」ボタンをクリックすることにより、この設定が保存されます。</para>
+          </step>
+        </procedure>
+      </section>
+      <section>
+        <title>データセットのデータ編集</title>
+        <procedure>
+          <step>
+            <para>最初、データ編集ダイアログには何も表示されていません。</para>
+            <figure>
+              <title>初期状態のデータ編集ダイアログ</title>
+              <screenshot>
+                <mediaobject><imageobject><imagedata fileref="images/dataSet_02.png"></imagedata></imageobject></mediaobject>
+              </screenshot>
+            </figure>
+          </step>
+          <step>
+            <para>表示エリアを右クリックしたメニューから「追加(A)」を選択することにより、INSERT対象のテーブルを追加することができます。テーブルを選択し、
+「OK」ボタンをクリックします。
+            </para>
+            <figure>
+              <title>右クリックにより、コンテキストメニューを表示する</title>
+              <screenshot>
+                <mediaobject><imageobject><imagedata fileref="images/dataSet_03.png"></imagedata></imageobject></mediaobject>
+              </screenshot>
+            </figure>
+            <figure>
+              <title>テーブル選択ダイアログ</title>
+              <screenshot>
+                <mediaobject><imageobject><imagedata fileref="images/dataSet_04.png"></imagedata></imageobject></mediaobject>
+              </screenshot>
+            </figure>
+          </step>
+          <step>
+            <para>選択したテーブルタブが追加されます。</para>
+            <figure>
+              <title>タブが追加されたのデータ編集ダイアログ</title>
+              <screenshot>
+                <mediaobject><imageobject><imagedata fileref="images/dataSet_05.png"></imagedata></imageobject></mediaobject>
+              </screenshot>
+            </figure>
+          </step>
+          <step>
+            <para>右クリックしたメニューから「削除(D)」を選択することにより、現在表示されているタブのテーブルに関するデータを削除することができます。</para>
+          </step>
+          <step>
+            <para>現在のバージョンでは、JiemamyのUIから行の追加・削除を行う事はできません。行の追加・削除をする場合は、一度データを
+CSV形式のファイルにエクスポートし、編集した後、インポートし直します。「CSVエクスポート(E)」ボタンをクリックして、エクスポートを行います。
+            </para>
+            <tip>
+              <para>Windowsでは、ここで出力ファイルの拡張子を適切に選択することにより、その拡張子に関連付けられたアプリケーションで、
+ファイルをスムーズに開くことができます。
+              </para>
+              <figure>
+                <title>エクスポート完了時に現れるダイアログ（Windowsのみ）</title>
+                <screenshot>
+                  <mediaobject><imageobject><imagedata fileref="images/dataSet_06.png"></imagedata></imageobject></mediaobject>
+                </screenshot>
+              </figure>
+            </tip>
+          </step>
+          <step>
+            <para>テキストエディタやMicrosoft Excel等でCSVファイルを編集し、保存します。</para>
+          </step>
+          <step>
+            <para>「CSVインポート(I)」ボタンをクリックして、インポートを行います。</para>
+          </step>
+          <step>
+            <para>既存のデータはその場で編集することができます。</para>
+            <figure>
+              <title>その場で編集</title>
+              <screenshot>
+                <mediaobject><imageobject><imagedata fileref="images/dataSet_07.png"></imagedata></imageobject></mediaobject>
+              </screenshot>
+            </figure>
+          </step>
+        </procedure>
+      </section>
+    </section>
+    <section>
+      <title>その他情報の設定</title>
+      <section>
+        <title>開始スクリプト・終了スクリプト</title>
+        <para>SQL出力の際、その全体のSQLの前後に、自由文を挿入することがきでます。手書きのSQLできめ細かな設定を追加で行いたい場合に便利です。</para>
+      </section>
+      <section>
+        <title>説明</title>
+        <para>このファイル全体に関する説明を、コメントとして記述することができます。</para>
+      </section>
+    </section>
+  </chapter>
+
+  <chapter id="editTable">
+    <title>テーブル編集ダイアログ</title>
+    <section>
+      <title>テーブル情報の設定</title>
+      <xi:include href="../common/section_table_addremove.xml"/>
+      <xi:include href="../common/section_table_movesize.xml"/>
+      <xi:include href="../common/section_table_edit.xml"/>
+    </section>
+    <section>
+      <title>カラム情報の設定</title>
+      <xi:include href="../common/section_column_addremove.xml"/>
+      <section>
+        <title>カラムの設定</title>
+        <para>上部のリストで選択したカラムは、下部の「カラム情報」で編集を行う事ができます。以下に、各項目の説明は以下の通りです。</para>
+        <itemizedlist>
+          <listitem><para>「カラム名(M)」 -- カラムの物理名を設定します。</para></listitem>
+          <listitem><para>「論理名(L)」 -- カラムの論理名を設定します。</para></listitem>
+          <listitem><para>「データ型(T)」 -- カラムのデータ型を設定します。設定したデータベースにより、選択肢が変化します。</para></listitem>
+          <listitem><para>データ型オプション -- データ型によって、右側に「サイズ」等の追加のコントロールが表示される場合があります。</para></listitem>
+          <listitem><para>「主キー(P)」 -- このカラムを主キーカラムとする場合にチェックします。</para></listitem>
+          <listitem><para>「NOT NULL(N)」 -- このカラムにNOT NULL制約を付加する場合にチェックします。</para></listitem>
+          <listitem><para>「無効(G)」 -- このカラムを、エクスポーターが無視するようになります。</para></listitem>
+          <listitem><para>「制約名(M)」 -- チェック制約式(K)に設定するチェック制約の名前を設定します。</para></listitem>
+          <listitem><para>「チェック制約式(K)」 -- このカラムに対するチェック制約を記述します。</para></listitem>
+          <listitem><para>「デフォルト値(F)」 -- このカラムに対するデフォルト値を設定します。</para></listitem>
+          <listitem><para>「説明(D)」 -- このカラムに対する説明文（コメント）を記述します。</para></listitem>
+        </itemizedlist>
+        <para>編集が終わり、変更を適用する場合はOKを、適用しない場合はCancelをクリックし、ダイアログを終了します。</para>
+      </section>
+    </section>
+    <section>
+      <title>キー制約情報の設定</title>
+      <section>
+        <title>キー制約の追加・削除</title>
+        <para>(TODO)</para>
+      </section>
+      <section>
+        <title>キー制約の設定</title>
+        <para>(TODO)</para>
+      </section>
+    </section>
+    <section>
+      <title>チェック制約情報の設定</title>
+      <section>
+        <title>チェック制約の追加・削除</title>
+        <para>(TODO)</para>
+      </section>
+      <section>
+        <title>チェック制約の設定</title>
+        <para>(TODO)</para>
+      </section>
+    </section>
+    <section>
+      <title>インデックス情報の設定</title>
+      <section>
+        <title>インデックスの追加・削除</title>
+        <para>(TODO)</para>
+      </section>
+      <section>
+        <title>インデックスの設定</title>
+        <para>(TODO)</para>
+      </section>
+    </section>
+    <section>
+      <title>その他情報の設定</title>
+      <section>
+        <title>開始スクリプト・終了スクリプト</title>
+        <para>SQL出力の際、そのテーブル定義SQLの前後に、自由文を挿入することがきでます。手書きのSQLできめ細かな設定を追加で行いたい場合に便利です。</para>
+      </section>
+      <section>
+        <title>説明</title>
+        <para>このテーブルに関する説明を、コメントとして記述することができます。</para>
+      </section>
+    </section>
+  </chapter>
+
+  <chapter id="editView">
+    <title>ビュー編集ダイアログ</title>
+    <section>
+      <title>ビュー情報の設定</title>
+      <xi:include href="../common/section_view_addremove.xml" />
+      <section>
+        <title>ビューの編集</title>
+        <para>(TODO)</para>
+      </section>
+      <section>
+        <title>ビューの移動</title>
+        <para>ビューは、テーブルと同様にドラッグ＆ドロップにより、表示位置やサイズを調整することができます。</para>
+      </section>
+    </section>
+    <section>
+      <title>ビュー定義情報の設定</title>
+      <para>(TODO)</para>
+    </section>
+    <section>
+      <title>その他情報の設定</title>
+      <section>
+        <title>開始スクリプト・終了スクリプト</title>
+        <para>SQL出力の際、そのビュー定義SQLの前後に、自由文を挿入することがきでます。手書きのSQLできめ細かな設定を追加で行いたい場合に便利です。</para>
+      </section>
+      <section>
+        <title>説明</title>
+        <para>このビューに関する説明を、コメントとして記述することができます。</para>
+      </section>
+    </section>
+  </chapter>
+
+  <chapter id="editForeignKey">
+    <title>外部キー編集ダイアログ</title>
+    <xi:include href="../common/section_fk_addremove.xml" />
+    <section>
+      <title>外部キーの編集</title>
+      <para>外部キーをダブルクリック、またはコンテキストメニューから「プロパティ(P)」を選択することにより、外部キー編集ダイアログが開きます。</para>
+      <para>このダイアログでは、外部キーに関する全ての情報を編集することができます。最下段の「マッピング」、参照元カラムと参照先カラムの
+対応関係（マッピング）を設定します。
+      </para>
+      <figure>
+        <title>外部キー編集ダイアログ</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/foreignKeyEdit_01.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+      <para>(TODO)</para>
+    </section>
+    <xi:include href="../common/section_bendpoint.xml"/>
+  </chapter>
+
+  <chapter id="editMemo">
+    <title>メモ編集ダイアログ</title>
+    <xi:include href="../common/section_memo_addremove.xml" />
+    <section>
+      <title>メモの編集</title>
+      <para>(TODO)</para>
+    </section>
+    <section>
+      <title>メモの移動</title>
+      <para>メモは、テーブルと同様にドラッグ＆ドロップにより、表示位置やサイズを調整することができます。</para>
+    </section>
+  </chapter>
+
+  <chapter id="layout">
+    <title>ダイアグラムのレイアウト</title>
+    <section>
+      <title>表示位置の調整</title>
+      <para>(TODO)</para>
+    </section>
+    <section>
+      <title>サイズの調整</title>
+      <para>(TODO)</para>
+    </section>
+    <section>
+      <title>自動レイアウト</title>
+      <para>(TODO)</para>
+    </section>
+    <section>
+      <title>表示モード・表示レベル</title>
+      <para>(TODO)</para>
+    </section>
+    <section>
+      <title>コネクションルータ</title>
+      <para>(TODO)</para>
+    </section>
+    <section>
+      <title>拡大・縮小</title>
+      <para>(TODO)</para>
+    </section>
+    <section>
+      <title>色の変更</title>
+      <para>(TODO)</para>
+    </section>
+  </chapter>
+
+  <chapter id="compose">
+    <title>インポート・エクスポート</title>
+    <para>外部のリソースからJiemamyモデルに情報の取り込みを行うことをインポート、Jiemamyモデルを別の形に変換して出力することをエクスポートと呼びます。
+また、インポートやエクスポートを行う拡張ロジックを、それぞれインポータ・エクスポータと呼びます。
+    </para>
+    <para>Jiemamyは拡張により、様々なインポートやエクスポートができるように設計されています。Jiemamyが標準で提供しているインポータは
+DatabaseImporter（実際のDBからスキーマを読み込むインポータ）、エクスポータはSqlExporter（JiemamyモデルをSQLに変換して出力する）です。
+その他、JPA (Java Persistence API)のエンティティクラスからテーブル情報を読み出したり、逆にJiemamyモデルからJPAエンティティクラスを生成したり、
+また、JiemamyモデルよりDB仕様書を出力する等のインポータ・エクスポータの開発が進んでいます。
+    </para>
+    <para>ここでは、DatabaseImporter及びSqlExporterの説明を行います。その他のインポータ・エクスポータについては、それぞれのドキュメントを
+参照してください。
+    </para>
+    <xi:include href="../common/section_database_import.xml" />
+    <xi:include href="../common/section_sql_export.xml" />
+  </chapter>
+
+  <chapter id="graphic">
+    <title>ダイアグラムを画像として保存</title>
+    <para>(TODO)</para>
+  </chapter>
+
+  <chapter id="xmlFile">
+    <title>出力XMLファイル形式</title>
+    <para>Jiemamyが出力するXMLは、出来る限りの可読性を確保するよう考慮されています。モデルエディタを使用せず、内容を見ながら直接編集
+することも可能です。また、Subversion等の構成管理を行った際のマージも行いやすい構成です。
+    </para>
+    <para>このXMLは、XML Schemaによる制約を定義してありますので、そのサポートを受けられるXMLエディタを使用して編集することをお勧めします。</para>
+    <para>XMLのルート要素は &lt;jiemamy&gt;であり、その子要素として、大きく分けて以下の5つのセクションがあります。</para>
+    <itemizedlist>
+      <listitem><para>DB基本情報セクション - SQL方言(dialect), スキーマ名(schemaName)等、モデル全体のプロパティ要素が定義されている。</para></listitem>
+      <listitem><para>ドメイン定義セクション - domains要素内にdomain要素が0～複数定義されている。</para></listitem>
+      <listitem><para>エンティティ定義セクション - entities要素内に、table要素やview要素が0～複数定義されている。</para></listitem>
+      <listitem><para>データセット定義セクション - dataSets要素内にdataSet要素が0～複数定義されている。</para></listitem>
+      <listitem><para>拡張定義セクション - 拡張による自由記述のセクション。JiemamyView拡張による、ER図の位置サイズ情報等が定義されている。</para></listitem>
+    </itemizedlist>
+    <para>その他、table要素内にはattribute要素があり、その中にカラムや外部キー等の情報が定義されています。作成したデータのXMLを
+観察することにより、大まかな定義方法は把握できるはずです。
+    </para>
+  </chapter>
+
+  <xi:include href="../common/chapter_finish.xml" />
+  
+</book>

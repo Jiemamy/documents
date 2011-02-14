@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>ビューの追加と削除</title>
+  <procedure>
+    <step><para>ビューの追加は、まずパレットの「エンティティ」カテゴリから「ビュー」を選択します。</para></step>
+    <step><para>その状態で、ダイアグラム上をクリックします。</para></step>
+  </procedure>
+  <para>以上で、ダイアグラム上にビューが1つ作成されます。</para>
+  <tip>
+    <para>ダイアグラムをクリックした場合、デフォルトサイズ（必要に応じてサイズが自動調整される）のノードが作成されます。
+ダイアグラムをドラッグした場合は、ドラッグしたサイズでテーブルが生成されます。この場合、手動でサイズ調整しない限り、カラムが隠れてしまう場合があります。
+    </para>
+  </tip>
+  <figure>
+    <title>パレット</title>
+    <screenshot>
+      <mediaobject><imageobject><imagedata fileref="images/palette.png"></imagedata></imageobject></mediaobject>
+    </screenshot>
+  </figure>
+  <para>ビューの削除は、削除したいビューを選択し、右クリックで表示されるコンテキストメニューから「Delete」を選択します。
+メニュー選択の代りに、<keycap>DEL</keycap>キーで削除を行うこともできます。
+  </para>
+  <tip>
+    <para>複数のノードを同時に選択し、全てを同時に削除することも可能です。</para>
+  </tip>
+  <figure>
+    <title>コンテキストメニュー</title>
+    <screenshot>
+      <mediaobject><imageobject><imagedata fileref="images/basic_delete.png"></imagedata></imageobject></mediaobject>
+    </screenshot>
+  </figure>
+</section>

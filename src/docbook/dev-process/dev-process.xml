@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+    "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<book lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Jiemamy 開発プロセスガイド</title>
+  <titleabbrev>開発プロセスガイド</titleabbrev>
+  <bookinfo>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/Jiemamy_logo_600x150.gif"/>
+      </imageobject>
+    </mediaobject>
+    <copyright>
+      <year>2009</year>
+      <holder>Jiemamy Project and the Others</holder>
+    </copyright>
+    <abstract>
+      <title>概要</title>
+      <para>Jiemamyプロジェクトが考える、Jiemamyをアプリケーション開発に適用する方法論を紹介します。</para>
+    </abstract>
+    <productname>Jiemamy</productname>
+    <releaseinfo>version 0.2</releaseinfo>
+  </bookinfo>
+  
+  <toc/>
+  
+  <preface>
+    <title>まえがき</title>
+    <para>このチュートリアルでは、(TODO)
+    </para>
+    <xi:include href="../common/section_license1.xml" />
+    <xi:include href="../common/section_license2.xml" />
+  </preface>
+  
+  <chapter id="intro">
+    <title>はじめに</title>
+    <para>皆さんが関わっているWebアプリケーションプロジェクト。大抵はCVS, Subversion, Git, Mercurial等による構成管理が行われていると思います。
+このソフトウェアをチェックアウトしてから、ビルド・デプロイ等の手順を踏んで起動にこぎ着けるまで、どのようなステップがありますか？ 
+設定ファイルを環境に合わせて整備し、DBをインストールし、このSQLを流して…。
+    </para>
+    <para>この、プロジェクトのビルド手順を標準化し、コマンドを1つ叩くだけで「今すぐ利用可能な状態」を作れるようにしよう、という試みの一つが
+Apache Mavenプロジェクトです。我々は、このビルド手法を「スマートビルド」と呼んでいますが、データベース(DB)の構築に関しては、理想的なスマートビルドを
+行う事が困難である感じました。
+    </para>
+    <para>開発中にDBのスキーマが変更になる際、どのような手続きを踏みますか？ DB管理者と相談し、ER図を更新し、初期DBの初期化SQLを更新し、
+前バージョンのDBからの移行スクリプトを書き…。
+    </para>
+    <para>このように、DBの管理・変更には大きなコストがかかります。</para>
+    <para>Jiemamyは、このDB構成の管理手順を標準化・補助することにより、DB状態の適切な管理を実現します。また、それにより、
+DBに対するリファクタリングや移行作業を簡潔に行うことができます。
+    </para>
+  </chapter>
+  
+  <chapter id="configurationManagement">
+    <title>構成管理</title>
+    <section>
+      <title>構成管理の重要性</title>
+      <para>システム開発を行う上で、構成管理の必要性はもはや言うまでもないのですが、今一度、この構成管理の目的を挙げてみます。
+下記の他にも数多くの構成管理によるメリットはあると思いますが…。
+      </para>
+      <itemizedlist>
+        <listitem><para>必要なファイル群をセットでまとめて入手できるようにする</para></listitem>
+        <listitem><para>プロジェクトの過去の状態をいつでも呼び出せるようにする</para></listitem>
+        <listitem><para>誰がどこをどの様に変更したのかを記録する</para></listitem>
+      </itemizedlist>
+      <para>ここでは、上に挙げた1つ目及び2つ目の役割について考えてみます。</para>
+    </section>
+    <section>
+      <title>管理の対象</title>
+      <para>構成管理の主な対象はファイルとなりますが、どのようなファイルを構成管理すべきでしょうか。</para>
+      <para>プロジェクトによっては、テストコードはコミットしない、データファイル・設定ファイルはコミットしない、ドキュメントやDBのCREATE文はファイルサーバに
+置いて管理する、などの不思議なルールがまかり通っています。果たして、これらのファイルを構成管理下に置かないメリットはあるのでしょうか。
+我々は、そのデメリットの方が大きいと考えています。
+      </para>
+      <itemizedlist>
+        <listitem><para>テストを誰しもが実行できなくなる</para></listitem>
+        <listitem><para>初めて開発環境を整える際に、既存メンバーの手を煩わせることになる</para></listitem>
+        <listitem><para>過去のドキュメント・DBの状態を呼び戻せなくなる</para></listitem>
+      </itemizedlist>
+      <para>その他にも色々なデメリットがあると思います。対して、これらのファイルを構成管理したがらない人が主張するのは「関係ないファイルを置きたくない」
+「置いても管理できない」等でしょう。ドキュメントは果たして「関係ないファイル」なのか。構成管理システム下に置かない事で「管理できるようになる」のか。
+今一度考えて頂きたいところです。
+      </para>
+      <para>構成管理の理想的な運用目的は、「コンパイルできる状態のソースコードを維持」することではなく、
+「<emphasis>正常に動作する状態のシステム</emphasis>を維持管理する」ことです。この視点で考えると、例えばDBの初期化スクリプト（SQL文など）を
+構成管理しなかった場合、ソースコードについては過去の状態が呼び出せたとしても、それに依存するDBの状況が再現できません。当時のDBは、どのような
+テーブルがあるべきだったのか。恐らくその点は、誰も管理していないと思います。つまり、昔の状態のアプリケーションを、もはや正常に動かす事ができないのです。
+      </para>
+      <para>以上の理由により、我々は、<emphasis>ソースコードだけではなく、プログラムの動作に必要なファイルだけではなく、そのプロジェクトにまつわる
+全てのファイル</emphasis>を構成管理すべきだと主張します。
+      </para>
+    </section>
+    <section>
+      <title>初期データも管理項目の一つ</title>
+      <para>以上のように、アプリケーションの過去の状況を呼び出す為には、アプリケーションのソースコードだけではなく、データベースのスキーマも管理する
+必要があることはお分かり頂けたかと思います。さらにもう一歩踏み込むと、例えば、初回ログインの為のアカウント情報や、デフォルトの設定情報など、
+テーブルはあったとしても空であっては正常に動作しないアプリケーションも多く存在します。
+      </para>
+      <para>従って、スキーマと同様、「初期データ」（初期状態でテーブルにINSERTされているべきデータ）も構成管理項目となります。</para>
+    </section>
+  </chapter>
+  
+  <chapter id="before">
+    <title>Jiemamyを使用せず、DBの構成管理を行うケース</title>
+    <para>(TODO)</para>
+  </chapter>
+  
+  <chapter id="changeDatabase">
+    <title>データベースの変更が発生した場合</title>
+    <para>(TODO)</para>
+  </chapter>
+
+  <chapter id="after">
+    <title>Jiemamyを使用して、DBの構成管理を行うケース</title>
+    <para>(TODO)</para>
+  </chapter>
+
+  <xi:include href="../common/chapter_finish.xml" />
+  
+</book>

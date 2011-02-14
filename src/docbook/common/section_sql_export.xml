@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>SQL・エクスポート</title>
+  <para>Jiemamyで作成したモデルは、SQLとしてエクスポートすることができます。</para>
+  <procedure>
+    <step>
+      <para>右クリックで表示されるコンテキストメニューから「エクスポート(E)」＞「SQL Exporter」を選択します。</para>
+      <figure>
+        <title>SQL Exporterの選択</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/sqlExporter_01.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+    </step>
+    <step>
+      <para>ポップアップしたウィザードで、出力するSQLファイルのパスを指定します。「参照(B)」ボタンで保存先を指定することもできます。
+また、指定したファイルが既に存在したら上書きを行いますが、出力を中止したい場合は「存在したら上書きする」のチェックを外して下さい。
+      </para>
+      <para>このページの設定が終わればFinishボタンでSQLファイルのエクスポートを完了します。さらに細かい出力設定を行う場合は、
+「Next >」ボタンをクリックします。
+      </para>
+      <figure>
+        <title>出力ファイルのパスを設定</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/sqlExporter_02.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+    </step>
+    <step>
+      <para>次のページでは、さらに出力の設定を行うことができます。CREATE文に先立ってDROP文も出力したい場合は「DROP文を出力する」に
+チェックを入れて下さい。CREATE SCHEMA文を出力したい場合は、「CREATE SCHEMA文を出力する」にチェックを入れて下さい。
+      </para>
+      <para>CREATE TABLE文の後に、登録したデータセットのINSERT文を出力したい場合は、「出力するデータセット」にて該当するデータセットを
+選択してください。</para>
+      <figure>
+        <title>細かい出力設定</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/sqlExporter_03.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+    </step>
+    <step>
+      <para>Finishボタンをクリックすることにより、SQLの出力を行うことができます。完了し次第、完了した旨のダイアログが表示されます。</para>
+    </step>
+  </procedure>
+</section>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>前提条件</title>
+  <para>Jiemamyを初めて使用する場合は、システムに次のソフトウェアをインストールしておく必要があります。下記ソフトウェアのインストールに関しては、
+Web上の各種リソースを参照して下さい。
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para><application>Java 2 Platform Standard Edition (J2SE)</application> 5.0 以降</para>
+    </listitem>
+  </itemizedlist>
+</section>

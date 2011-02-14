@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+    "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<book lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Jiemamy クイックスタートガイド</title>
+  <titleabbrev>クイックスタート</titleabbrev>
+  <bookinfo>
+    <mediaobject>
+      <imageobject>
+        <imagedata fileref="images/Jiemamy_logo_600x150.gif"/>
+      </imageobject>
+    </mediaobject>
+    <copyright>
+      <year>2011</year>
+      <holder>Jiemamy Project and the Others</holder>
+    </copyright>
+    <abstract>
+      <title>概要</title>
+      <para>Jiemamy Eclipse Model Editorの基礎的な使用方法を説明し、実例に沿いながら操作をしてみます。</para>
+    </abstract>
+    <productname>Jiemamy Eclipse Model Editor</productname>
+    <releaseinfo>version 0.3.0</releaseinfo>
+  </bookinfo>
+  
+  <toc/>
+  
+  <preface>
+    <title>まえがき</title>
+    <para>Jiemamyにようこそ。</para>
+    <para>このチュートリアルでは、簡単なER図の作成を通じて、Jiemamyの基本的な使い方を簡潔に紹介します。
+このチュートリアルを終了すれば、Jiemamy Eclipse Model Editorを利用したJiemamyモデル編集に関する基本的な知識が身に付きます。
+
+このチュートリアルを完了するのに要する時間は約30分です。
+
+このチュートリアルを終了したら、Jiemamy Eclipse Model Editorリファレンスに進む事ができます。
+    </para>
+    <xi:include href="../common/section_license1.xml" />
+    <xi:include href="../common/section_license2.xml" />
+  </preface>
+  
+  <chapter id="intro">
+    <title>はじめに</title>
+    <section>
+      <title>概要</title>
+      <para>Jiemamyは、Webアプリケーションの開発に伴うデータベーススナップショット（スキーマと初期データ等）の管理スイートを提供します。
+GUIエディタによるER図の管理を通じてDBの状態・履歴を管理し、データベースのリファクタリングなどをサポートします。
+      </para>
+    </section>
+    <xi:include href="../common/section_discharge.xml" />
+    <xi:include href="../common/section_editor_conditions.xml" />
+    <xi:include href="../common/section_install.xml" />
+  </chapter>
+
+  <chapter id="basic">
+    <title>エディタの基本操作</title>
+    <xi:include href="../common/section_editor_openclose.xml"/>
+    <xi:include href="../common/section_editor_save.xml"/>
+    <section>
+      <title>DBの選択</title>
+      <para>新しいJiemamyモデルファイルを開いたら、まずこれからモデリングするスキーマを適用するデータベースを選択します。このチュートリアルでは
+MySQLを使用します。エディタの背景を右クリックし、メニューからプロパティ(P)を選択します。
+      </para>
+      <figure>
+        <title>エディタを右クリックしたメニューからプロパティ(P)を選択</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/rootEdit_01.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+      <para>ポップアップしたダイアログのデータベースの項目を MySQL5.0 に変更し、OKボタンをクリックします。</para>
+      <figure>
+        <title>データベースの選択</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/rootEdit_02.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+    </section>
+  </chapter>
+
+  <chapter id="diagram">
+    <title>ダイアグラム</title>
+    <section>
+      <title>エンティティ</title>
+      <para>テーブルとビューをあわせて、エンティティと呼びます。エンティティはダイアグラム上で矩形のノードとしてあらわされます。
+エンティティ名の左側に T のマークがあるものがテーブル、V のマークがあるものがビューを表します。デフォルトの色は下図の通りです。
+      </para>
+      <note>
+        <para>ノードの色は変更できますので、色でエンティティの種類を確実に判断することはできません。</para>
+      </note>
+      <figure>
+        <title>エンティティノード</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/diagram_01.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+      <para>矩形の最上段がエンティティ種別マークとエンティティ名、罫線を挟んでその下側がカラム名とデータ型のリストになります。</para>
+      <note>
+        <para>現行のバージョンでは、ビューのカラムは表示されません。</para>
+      </note>
+      <para>テーブルにおいて、主キーに設定されたカラムは、そのカラム名とデータ型にアンダーラインがつきます。</para>
+    </section>
+    <section>
+      <title>リレーション</title>
+      <para>外部キーの関係は、ダイアグラム上でコネクションとしてあらわされます。制約を受けるテーブルから参照されるテーブルに向けての
+矢印がリレーションです。
+      </para>
+      <figure>
+        <title>リレーション</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/diagram_02.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+      <para>コネクションの上にはラベルが表示され、1行目が外部キー名（無名の場合は表示されません）、2行目以降が「制約を受けるカラムの名前 -> 
+参照されるカラムの名前」のフォーマットで対応関係が表示されます。
+      </para>
+    </section>
+    <section>
+      <title>メモ</title>
+      <para>ダイアグラム上にメモを記述することができます。メモは下図のように角丸矩形のノードで表示されます。</para>
+      <figure>
+        <title>メモ</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/diagram_03.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+    </section>
+    <!--
+    <section>
+      <title>メモ・コネクション</title>
+      <para>メモと、その他のノードを接続する説明用のコネクションは、(TODO)</para>
+    </section>
+    -->
+  </chapter>
+  
+  <chapter id="edit-table">
+    <title>基本操作1 テーブル</title>
+    <para>この章では、テーブルの操作を解説します。</para>
+    <xi:include href="../common/section_table_addremove.xml"/>
+    <xi:include href="../common/section_table_movesize.xml"/>
+    <section>
+      <title>テーブルの編集</title>
+      <para>テーブルをダブルクリック、またはコンテキストメニューから「プロパティ(P)」を選択することにより、テーブル編集ダイアログが開きます。</para>
+      <para>このダイアログでは、テーブルに関する全ての情報を編集することができます。最上段の「テーブル名(N)」欄で、テーブル名を指定します。</para>
+      <figure>
+        <title>テーブル編集ダイアログ</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/tableEdit_01.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+    </section>
+    <xi:include href="../common/section_column_addremove.xml"/>
+    <section>
+      <title>カラムの編集</title>
+      <para>上部のリストで選択したカラムは、下部の「カラム情報」で編集を行う事ができます。以下に、代表的な項目を説明します。</para>
+      <itemizedlist>
+        <listitem><para>「カラム名(M)」 -- カラムの物理名を設定します。</para></listitem>
+        <listitem><para>「データ型(T)」 -- カラムのデータ型を設定します。設定したデータベースにより、選択肢が変化します。</para></listitem>
+        <listitem><para>データ型オプション -- データ型によって、右側に「サイズ」等の追加のコントロールが表示される場合があります。</para></listitem>
+        <listitem><para>「主キー(P)」 -- このカラムを主キーカラムとする場合にチェックします。</para></listitem>
+        <listitem><para>「NOT NULL(N)」 -- このカラムにNOT NULL制約を付加する場合にチェックします。</para></listitem>
+      </itemizedlist>
+      <para>編集が終わり、変更を適用する場合はOKを、適用しない場合はCancelをクリックし、ダイアログを終了します。</para>
+    </section>
+  </chapter>
+
+  <chapter id="edit-fk">
+    <title>基本操作2 外部キー</title>
+    <xi:include href="../common/section_fk_addremove.xml" />
+    <section>
+      <title>外部キーの編集</title>
+      <para>外部キーをダブルクリック、またはコンテキストメニューから「プロパティ(P)」を選択することにより、外部キー編集ダイアログが開きます。</para>
+      <para>このダイアログでは、外部キーに関する全ての情報を編集することができます。最下段の「マッピング」、参照元カラムと参照先カラムの
+対応関係（マッピング）を設定します。
+      </para>
+      <figure>
+        <title>外部キー編集ダイアログ</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/foreignKeyEdit_01.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+    </section>
+    <xi:include href="../common/section_bendpoint.xml"/>
+  </chapter>
+
+  <chapter id="compose">
+    <title>インポートとエクスポート</title>
+    <para>外部のリソースからJiemamyモデルに情報の取り込みを行うことをインポート、Jiemamyモデルを別の形に変換して出力することをエクスポートと呼びます。
+また、インポートやエクスポートを行う拡張ロジックを、それぞれインポータ・エクスポータと呼びます。
+    </para>
+    <para>ここでは、DatabaseImporter及びSqlExporterの説明を行います。その他のインポータ・エクスポータについては、それぞれのドキュメントを
+参照してください。
+    </para>
+    <xi:include href="../common/section_database_import.xml" />
+    <xi:include href="../common/section_sql_export.xml" />
+  </chapter>
+
+  <chapter id="caseStudy">
+    <title>ケース・スタディ</title>
+    <para>ここでは、Jiemamyでダイアグラムを作成し、SQLにエクスポートするまでを、順を追って説明します。</para>
+    <para>(TODO)</para>
+  </chapter>
+
+  <xi:include href="../common/chapter_finish.xml" />
+
+</book>

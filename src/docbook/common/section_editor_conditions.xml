@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>前提条件</title>
+  <para>Jiemamyを初めて使用する場合は、システムに次のソフトウェアをインストールしておく必要があります。下記ソフトウェアのインストールに関しては、
+Web上の各種リソースを参照して下さい。
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para><application>Java 2 Platform Standard Edition (J2SE)</application> 5.0 以降</para>
+    </listitem>
+    <listitem>
+      <para><application>Eclipse 3.3</application> (Europa)以降</para>
+    </listitem>
+  </itemizedlist>
+  <note>
+    <para>以上は、Jiemamy Model Editorの動作環境です。Jiemamyを使用して作るプロジェクトに関しては、Javaのバージョンの制限はありません。
+Jiemamyは工夫次第で、Javaプロジェクト以外にも適用できる可能性があります。
+    </para>
+  </note>
+  <para>また、Jiemamy Eclipse Model Editorの動作にあたっては、下記のEclipseプラグインが必要となります。インストールに関しては後述します。
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para>Eclipse Graphical Editing Framework (GEF) 3.2 以降</para>
+    </listitem>
+  </itemizedlist>
+</section>

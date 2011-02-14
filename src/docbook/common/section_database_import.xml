@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section lang="ja" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>データベース・インポート</title>
+  <para>既存のデータベースからJiemamyに、スキーマをインポートすることができます。</para>
+  <procedure>
+    <step>
+      <para>右クリックで表示されるコンテキストメニューから「インポート(I)」＞「Database Importer」を選択します。</para>
+      <figure>
+        <title>Database Importerの選択</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/databaseImporter_01.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+    </step>
+    <step>
+      <para>ポップアップしたウィザードで、まず「データベース種別(D)」にてインポート元のDBの種類（SQL方言）を設定します。</para>
+      <figure>
+        <title>DBインポートウィザード</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/databaseImporter_02.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+    </step>
+    <step>
+      <para>「追加(A)」ボタンをクリックし、JDBCドライバを含むjarファイルを選択します。ドライバの動作にあたって複数のjarが必要な場合は、
+このステップを繰り返します。
+      </para>
+    </step>
+    <step>
+      <para>ドライバjarに含まれるDriverクラスが「JDBCドライバクラス(C)」に表示されるので、適切なドライバクラスを選択します。</para>
+    </step>
+    <step>
+      <para>「接続URI(I)」に、データベース接続URIを設定します。</para>
+    </step>
+    <step>
+      <para>「接続ユーザ名(U)」と「接続パスワード(P)」に、接続アカウントを設定します。</para>
+    </step>
+    <step>
+      <para>「スキーマ名(S)」とにスキーマ名を設定します。空欄でも構いません。</para>
+    </step>
+    <step>
+      <para>以上を設定の上、「接続テスト(T)」ボタンをクリックし、結果のダイアログを確認します。</para>
+      <figure>
+        <title>接続に成功した場合</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/databaseImporter_03.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+      <figure>
+        <title>接続に失敗した場合の一例（この例は、PostgreSQLで、パスワードが異なる場合）</title>
+        <screenshot>
+          <mediaobject><imageobject><imagedata fileref="images/databaseImporter_04.png"></imagedata></imageobject></mediaobject>
+        </screenshot>
+      </figure>
+    </step>
+    <step>
+      <para>接続できることを確認したら、Finishボタンをクリックします。</para>
+    </step>
+    <step>
+      <para>インポートにはしばらく時間がかかる可能性があります。完了し次第、完了した旨のダイアログが表示されます。</para>
+    </step>
+  </procedure>
+</section>
