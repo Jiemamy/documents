@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?><project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.jiemamy</groupId>
-    <artifactId>master</artifactId>
-    <version>1.1</version>
+    <artifactId>jiemamy-master</artifactId>
+    <version>1.7.1</version>
   </parent>
   <groupId>org.jiemamy</groupId>
   <artifactId>documents</artifactId>
   <name>Jiemamy Documents</name>
-  <version>0.2.0</version>
+  <version>0.3.0-SNAPSHOT</version>
   <description>Jiemamy Documents</description>
-  <url>http://report.jiemamy.org/document</url>
   <inceptionYear>2009</inceptionYear>
   <developers>
     <developer>
@@ -22,9 +22,9 @@
     </developer>
   </developers>
   <scm>
-    <connection>scm:svn:http://svn.sourceforge.jp/svnroot/jiemamy/metis/trunk/</connection>
-    <developerConnection>scm:svn:svn+ssh://svn.sourceforge.jp/svnroot/jiemamy/metis/trunk/</developerConnection>
-    <url>http://svn.sourceforge.jp/cgi-bin/viewcvs.cgi/metis/trunk/?root=jiemamy</url>
+    <connection>scm:svn:http://svn.jiemamy.org/products/metis/documents/trunk/</connection>
+    <developerConnection>scm:svn:http://svn.jiemamy.org/products/metis/documents/trunk/</developerConnection>
+    <url>http://fisheye.jiemamy.org/browse/metis/documents/trunk</url>
   </scm>
   <build>
     <defaultGoal>process-sources</defaultGoal>
@@ -54,6 +54,40 @@
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-library</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jiemamy</groupId>
+      <artifactId>jiemamy-core</artifactId>
+      <version>0.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jiemamy</groupId>
+      <artifactId>jiemamy-diagram</artifactId>
+      <version>0.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jiemamy</groupId>
+      <artifactId>jiemamy-sql</artifactId>
+      <version>0.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jiemamy</groupId>
+      <artifactId>jiemamy-dialect-mysql</artifactId>
+      <version>0.3.0</version>
+    </dependency>
+  </dependencies>
   <repositories>
     <repository>
       <id>jiemamy.org</id>
@@ -61,34 +95,4 @@
       <url>http://maven.jiemamy.org/release</url>
     </repository>
   </repositories>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.5</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.hamcrest</groupId>
-      <artifactId>hamcrest-library</artifactId>
-      <version>1.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-      <version>2.4</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jiemamy</groupId>
-      <artifactId>jiemamy-view</artifactId>
-      <version>0.2.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.jiemamy</groupId>
-      <artifactId>jiemamy-dialect-mysql</artifactId>
-      <version>0.2.0</version>
-    </dependency>
-  </dependencies>
 </project>

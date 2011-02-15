@@ -24,7 +24,7 @@ src/docbook/(editor-quickstart|editor-reference|dev-process|api-quickstart)内�
 この状態でAntを引数なしで起動することにより target/(editor-quickstart|editor-reference|dev-process|api-quickstart) 内に
 各種フォーマットのドキュメントが生成されます。
 
-Eclipse上からAntを実行するとビルドに失敗することがあります。ドキュメントビルドに失敗する場合は、コマンドライン上から実行することを推奨します。
+Eclipse上からAntを実行するとビルドに失敗することがありますので、コマンドライン上から実行することを推奨します。
 ドキュメントプロジェクトのカレントディレクトリに移動した後、antコマンドを実行してください。
 またWindowsVistaの場合、TrueFont関連でWarningやErrorが発生しますが問題ありませんので無視してください。
 

@@ -7,21 +7,20 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-import org.jiemamy.Jiemamy;
-import org.jiemamy.JiemamyFactory;
-import org.jiemamy.composer.exporter.DefaultSqlExportConfig;
+import org.jiemamy.JiemamyContext;
+import org.jiemamy.SimpleJmMetadata;
+import org.jiemamy.composer.exporter.SimpleSqlExportConfig;
 import org.jiemamy.composer.exporter.SqlExporter;
-import org.jiemamy.dialect.BuiltinDataTypeMold;
 import org.jiemamy.dialect.Dialect;
 import org.jiemamy.dialect.mysql.MySqlDialect;
-import org.jiemamy.model.RootModel;
-import org.jiemamy.model.attribute.ColumnModel;
-import org.jiemamy.model.datatype.BuiltinDataType;
-import org.jiemamy.model.datatype.DataTypeCategory;
-import org.jiemamy.model.datatype.adapter.SizedDataTypeAdapter;
-import org.jiemamy.model.entity.TableModel;
+import org.jiemamy.model.column.SimpleJmColumn;
+import org.jiemamy.model.datatype.RawTypeCategory;
+import org.jiemamy.model.datatype.RawTypeDescriptor;
+import org.jiemamy.model.datatype.SimpleDataType;
+import org.jiemamy.model.datatype.SimpleRawTypeDescriptor;
+import org.jiemamy.model.datatype.TypeParameterKey;
+import org.jiemamy.model.table.SimpleJmTable;
 import org.jiemamy.serializer.JiemamySerializer;
-import org.jiemamy.utils.model.RootModelUtil;
 import org.junit.Test;
 
 /**
@@ -37,9 +36,10 @@ public class JiemamyTest {
 	 * @throws Exception 例外が発生した場合
 	 */
 	@Test
+	@SuppressWarnings("unused")
 	public void test01() throws Exception {
 		//@extract-start newJiemamy
-		Jiemamy jiemamy = Jiemamy.newInstance();
+		JiemamyContext context = new JiemamyContext();
 		//@extract-end newJiemamy
 	}
 	
@@ -49,39 +49,23 @@ public class JiemamyTest {
 	 * @throws Exception 例外が発生した場合
 	 */
 	@Test
+	@SuppressWarnings("unused")
 	public void test02() throws Exception {
-		//@extract-start getFactory
-		Jiemamy jiemamy = Jiemamy.newInstance();
-		JiemamyFactory factory = jiemamy.getFactory();
-		//@extract-end getFactory
-		
 		//@extract-start newTable
-		TableModel tableModel = factory.newModel(TableModel.class);
+		SimpleJmTable table = new SimpleJmTable();
 		//@extract-end newTable
 		
-		RootModel rootModel = factory.getRootModel();
-		RootModelUtil.setDialect(rootModel, MySqlDialect.class);
-		Dialect dialect = rootModel.findDialect();
+		JiemamyContext context = new JiemamyContext();
+		SimpleJmMetadata metadata = new SimpleJmMetadata();
+		metadata.setDialectClassName(MySqlDialect.class.getName());
+		context.setMetadata(metadata);
+		Dialect dialect = context.findDialect();
 		
 		//@extract-start newDataType
-		BuiltinDataTypeMold mold = dialect.findDataTypeMold(DataTypeCategory.VARCHAR);
-		BuiltinDataType dataType = factory.newDataType(mold);
-		dataType.getAdapter(SizedDataTypeAdapter.class).setSize(36);
+		SimpleRawTypeDescriptor typeDesc = new SimpleRawTypeDescriptor(RawTypeCategory.VARCHAR);
+		SimpleDataType dataType = new SimpleDataType(typeDesc);
+		dataType.putParam(TypeParameterKey.SIZE, 36);
 		//@extract-end newDataType
-	}
-	
-	/**
-	 * コードサンプル。
-	 * 
-	 * @throws Exception 例外が発生した場合
-	 */
-	@Test
-	public void test03() throws Exception {
-		//@extract-start getRootModel
-		Jiemamy jiemamy = Jiemamy.newInstance();
-		JiemamyFactory factory = jiemamy.getFactory();
-		RootModel rootModel = factory.getRootModel();
-		//@extract-end getRootModel
 	}
 	
 	/**
@@ -93,63 +77,64 @@ public class JiemamyTest {
 	public void test04() throws Exception {
 		//@extract-start simpleTable
 		// initialize Jiemamy
-		Jiemamy jiemamy = Jiemamy.newInstance();
-		JiemamyFactory factory = jiemamy.getFactory();
-		RootModel rootModel = factory.getRootModel();
+		JiemamyContext context = new JiemamyContext();
 		
 		// set Dialect to ues and get instance
-		RootModelUtil.setDialect(rootModel, MySqlDialect.class);
-		Dialect dialect = rootModel.findDialect();
+		SimpleJmMetadata metadata = new SimpleJmMetadata();
+		metadata.setDialectClassName(MySqlDialect.class.getName());
+		context.setMetadata(metadata);
+		Dialect dialect = context.findDialect();
 		
 		// create TABLE and set name
-		TableModel tableModel = factory.newModel(TableModel.class);
-		tableModel.setName("T_USER");
+		SimpleJmTable table = new SimpleJmTable();
+		table.setName("T_USER");
 		
 		// create COLUMN and set name
-		ColumnModel columnId = factory.newModel(ColumnModel.class);
+		SimpleJmColumn columnId = new SimpleJmColumn();
 		columnId.setName("ID");
 		
 		// create DataType of INTEGER and set it to column
-		BuiltinDataTypeMold mold1 = dialect.findDataTypeMold(DataTypeCategory.INTEGER);
-		BuiltinDataType dataType1 = factory.newDataType(mold1);
-		columnId.setDataType(dataType1);
+		RawTypeDescriptor integer = dialect.normalize(new SimpleRawTypeDescriptor(RawTypeCategory.INTEGER));
+		SimpleDataType type1 = new SimpleDataType(integer);
+		type1.putParam(TypeParameterKey.SERIAL, true);
+		columnId.setDataType(type1);
 		
 		// add COLUMN to TABLE
-		tableModel.getAttributes().add(columnId);
+		table.store(columnId);
 		
 		// create COLUMN and set name
-		ColumnModel columnName = factory.newModel(ColumnModel.class);
+		SimpleJmColumn columnName = new SimpleJmColumn();
 		columnName.setName("NAME");
 		
 		// create DataType of VARCHAR(32) and set it to column
-		BuiltinDataTypeMold mold2 = dialect.findDataTypeMold(DataTypeCategory.VARCHAR);
-		BuiltinDataType dataType2 = factory.newDataType(mold2);
-		dataType2.getAdapter(SizedDataTypeAdapter.class).setSize(36);
-		columnName.setDataType(dataType2);
+		RawTypeDescriptor varchar = dialect.normalize(new SimpleRawTypeDescriptor(RawTypeCategory.VARCHAR));
+		SimpleDataType type2 = new SimpleDataType(varchar);
+		type2.putParam(TypeParameterKey.SIZE, 36);
+		columnName.setDataType(type2);
 		
 		// add COLUMN to TABLE
-		tableModel.getAttributes().add(columnName);
+		table.store(columnName);
 		
-		// add TABLE to RootModel
-		rootModel.getEntities().add(tableModel);
+		// add TABLE to JiemamyContext
+		context.store(table);
 		//@extract-end simpleTable
 		
 		//@extract-start sqlExport
 		SqlExporter exporter = new SqlExporter();
-		DefaultSqlExportConfig config = new DefaultSqlExportConfig();
+		SimpleSqlExportConfig config = new SimpleSqlExportConfig();
 		config.setDataSetIndex(-1);
 		config.setEmitDropStatements(false);
 		config.setOutputFile(new File("./target/test.sql"));
 		config.setOverwrite(true);
-		boolean result = exporter.exportModel(rootModel, config);
+		boolean result = exporter.exportModel(context, config);
 		//@extract-end sqlExport
 		
 		assertThat(result, is(true));
 		
 		{
 			//@extract-start serialize
-			JiemamySerializer serializer = jiemamy.getSerializer();
-			serializer.serialize(rootModel, new FileOutputStream("./target/output.jer"));
+			JiemamySerializer serializer = JiemamyContext.findSerializer();
+			serializer.serialize(context, new FileOutputStream("./target/output.jer"));
 			//@extract-end serialize
 			assertThat(new File("./target/output.jer").exists(), is(true));
 		}
@@ -158,10 +143,10 @@ public class JiemamyTest {
 		
 		{
 			//@extract-start deserialize
-			JiemamySerializer serializer = jiemamy.getSerializer();
-			RootModel deserialized = serializer.deserialize(new FileInputStream("./target/output.jer"));
+			JiemamySerializer serializer = JiemamyContext.findSerializer();
+			JiemamyContext deserialized = serializer.deserialize(new FileInputStream("./target/output.jer"));
 			//@extract-end deserialize
-			assertThat(deserialized.getEntities().size(), is(1));
+			assertThat(deserialized.getTables().size(), is(1));
 		}
 	}
 	
