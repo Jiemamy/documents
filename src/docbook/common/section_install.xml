@@ -2,37 +2,36 @@
 <section>
   <title>インストール</title>
   <para>まず、Jiemamy Model Editorのインストールを行います。</para>
-  <para>Eclipseのメニューバーより、Help ＞ Software Updates ＞ Find and install... をクリックし、ウィザードの
-Search for new features to install を選択し、Next をクリックします。
+  <para>Eclipseのメニューバーより、Help ＞ Install New Software... をクリックし、Installダイアログを開きます。
   </para>
   <figure>
-    <title>メニューバーより Find and Install...を選択</title>
+    <!-- installダイアログ -->
+    <title>Installダイアログ</title>
     <screenshot>
       <mediaobject><imageobject><imagedata fileref="images/intro_01.png"></imagedata></imageobject></mediaobject>
     </screenshot>
   </figure>
-  <figure>
-    <title>ウィザードの Search for new features to install を選択</title>
-    <screenshot>
-      <mediaobject><imageobject><imagedata fileref="images/intro_02.png"></imagedata></imageobject></mediaobject>
-    </screenshot>
-  </figure>
-  <para>ウィザードの2ページ目において、Jiemamy Eclipseプラグイン配布サイトの登録を行います。New Remote Siteボタンをクリックし、
+  <para>Jiemamy Eclipseプラグイン配布サイトの登録を行います。addボタンをクリックし、
 Nameに任意の名称（"Jiemamy Update Site" を推奨）を、URLに<uri>http://eclipse.jiemamy.org/release/</uri>を入力し、
 OKボタンをクリックします。
   </para>
   <figure>
-    <title>New Remote Siteボタンをクリック</title>
-    <screenshot>
-      <mediaobject><imageobject><imagedata fileref="images/intro_03.png"></imagedata></imageobject></mediaobject>
-    </screenshot>
-  </figure>
-  <figure>
+  	<!-- addボタンクリックした後のURL入れる画面 -->
     <title>Jiemamy Eclipseプラグイン配布サイトの登録</title>
     <screenshot>
-      <mediaobject><imageobject><imagedata fileref="images/intro_04.png"></imagedata></imageobject></mediaobject>
+      <mediaobject><imageobject><imagedata fileref="images/intro_02.png"></imagedata></imageobject></mediaobject>
     </screenshot>
   </figure>
+  <para>InstallダイアログのWork withの右隣のプルダウンリストの中から先ほど登録したJiemamy Update SiteのURLを選択します。
+  選択した後、インストールを行うプラグインとフューチャを選択します。問題がなければ全てのプラグインとフューチャをインストールすることをお勧めします。
+  </para>
+  <tip>
+    <para>Jiemamy Eclipse Dialect Plug-ins以下に表示されるプラグインはDialectと呼ばれ、Jiemamyモデルを各種データベースに適応させる
+    ためのプラグイン群です。現在はPostgreSQLとMySQL用のDialectを提供しています。利用するデータベースにあわせてインストールしてください。
+    Jiemamy Eclipse Model EditorがEclipse上で動作するModel Editorの本体に当たります。このプラグインはどのような場合でも必要です。
+    </para>
+  </tip>
+<!-- ここいる？
   <para>Jiemamy Eclipse Model Editorの動作には、Eclipse Graphical Editing Framework (GEF) 3.2 以降が必要となります。
 GEFは、EclipseのプラグインとしてEclipse公式サイト（Europa Discovery Site）にて配布されていますので、ここで同時にインストールを行います。
 既にGEFがインストールされている場合は、Europa Discovery Siteを選択する必要はありません。
@@ -43,49 +42,57 @@ GEFは、EclipseのプラグインとしてEclipse公式サイト（Europa Disco
  インストールすることも可能です。GEFをインストールする場合は、Graphical Editing Framework にもチェックを入れます。
  選択が完了したら、Nextボタンをクリックします。
   </para>
+-->
+  <!-- チェックの入った状態のスクリーンショット -->
   <figure>
     <title>インストールするプラグインの選択</title>
+    <screenshot>
+      <mediaobject><imageobject><imagedata fileref="images/intro_03.png"></imagedata></imageobject></mediaobject>
+    </screenshot>
+  </figure>
+  <para>インストールするプラグインとフューチャの一覧が表示されます。確認してNextボタンをクリックします。
+  </para>
+  <!-- インストール一覧のスクリーンショット -->
+  <figure>
+    <title>インストールするプラグインとフューチャの一覧表示</title>
+    <screenshot>
+      <mediaobject><imageobject><imagedata fileref="images/intro_04.png"></imagedata></imageobject></mediaobject>
+    </screenshot>
+  </figure>
+  <para>ライセンス許諾（Apache License Version 2.0）に同意の上、I accept the terms in the licese agreements を選択し、
+Finishボタンをクリックします。インストールが開始されます。
+  </para>
+  <!-- ライセンス許諾への同意画面 -->
+  <figure>
+    <title>ライセンス許諾への同意</title>
     <screenshot>
       <mediaobject><imageobject><imagedata fileref="images/intro_05.png"></imagedata></imageobject></mediaobject>
     </screenshot>
   </figure>
-  <para>ライセンス許諾（Apache License Version 2.0）に同意の上、I accept the terms in the licese agreements を選択し、
-Nextボタンをクリックします。
-  </para>
+  <para>インストールが進むとセキュリティ警告のダイアログが表示されます。OKボタンをクリックしてインストールを続けてください。</para>
+  <!-- セキュリティ警告の画面 -->
   <figure>
-    <title>ライセンス許諾への同意</title>
+    <title>署名されていないコンポーネントのインストールの確認</title>
     <screenshot>
       <mediaobject><imageobject><imagedata fileref="images/intro_06.png"></imagedata></imageobject></mediaobject>
     </screenshot>
   </figure>
-  <para>インストール先を確認し（通常、デフォルトのままで構いません）、Finishボタンをクリックします。</para>
+  <para>インストール完了後、Eclipseの再起動を求めるダイアログが表示されます。Restart nowボタンをクリックしてEclipseの再起動を行います。</para>
+  <!-- 再起動確認の画面 -->
   <figure>
-    <title>インストール先の確認</title>
+    <title>Eclipseの再起動の確認</title>
     <screenshot>
       <mediaobject><imageobject><imagedata fileref="images/intro_07.png"></imagedata></imageobject></mediaobject>
     </screenshot>
   </figure>
-  <para>インストールするプラグインの確認がありますので、Install Allボタンをクリックします。</para>
-  <figure>
-    <title>インストールするプラグインの確認</title>
-    <screenshot>
-      <mediaobject><imageobject><imagedata fileref="images/intro_08.png"></imagedata></imageobject></mediaobject>
-    </screenshot>
-  </figure>
-  <para>プログレスバーの進行が完了すると、Eclipseの再起動を促されます。YesボタンをクリックしてEclipseの再起動を行います。
-以上でJiemamy Eclipse Model Editorのインストールは完了です。メニューバーから Help ＞ About Eclipse Platform を選択し、
+  <para>以上でJiemamy Eclipse Model Editorのインストールは完了です。メニューバーから Help ＞ About Eclipse Platform を選択し、
 AboutダイアログにJiemamyのロゴが表示されていれば、インストール成功です。
   </para>
-  <figure>
-    <title>再起動確認</title>
-    <screenshot>
-      <mediaobject><imageobject><imagedata fileref="images/intro_09.png"></imagedata></imageobject></mediaobject>
-    </screenshot>
-  </figure>
+  <!-- Jiemamyロゴの確認 -->
   <figure>
     <title>インストールの成否確認</title>
     <screenshot>
-      <mediaobject><imageobject><imagedata fileref="images/intro_10.png"></imagedata></imageobject></mediaobject>
+      <mediaobject><imageobject><imagedata fileref="images/intro_08.png"></imagedata></imageobject></mediaobject>
     </screenshot>
   </figure>
 </section>
